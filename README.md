@@ -46,11 +46,12 @@ Explicação:
 Ao executar, o programa pede três entradas principais:
 
 1. Tipo de vetor:
+   - 0 - Sair
    - 1 - Crescente
    - 2 - Decrescente
    - 3 - Aleatório
 
-2. Tamanho do vetor: informe um número inteiro (ex.: 1000).
+2. Tamanho do vetor: informe um número inteiro maior que zero (ex.: 1000).
 
 3. Seleção do algoritmo:
    - 1 - Insertion Sort
@@ -59,6 +60,8 @@ Ao executar, o programa pede três entradas principais:
    - 4 - Merge Sort
    - 5 - Heap Sort
    - 6 - Quick Sort
+
+Entradas não numéricas são rejeitadas com uma mensagem de erro, sem encerrar o programa.
 
 O programa imprime o vetor ordenado apenas quando ele tem até 100 elementos. Para vetores maiores, a impressão é omitida para evitar lentidão e excesso de saída. O programa sempre mostra o tempo de execução em milissegundos, o total de comparações e o total de atribuições. A medição usa `System.nanoTime()` e converte o resultado para milissegundos na saída.
 
