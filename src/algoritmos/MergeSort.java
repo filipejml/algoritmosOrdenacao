@@ -1,13 +1,27 @@
 package algoritmos;
 
 public class MergeSort {
-    private static int contadorAtribuicao = 0; // Contador de operações de atribuição
-    private static int contadorComparacao = 0; // Contador de operações de comparação
+    private static int contadorAtribuicao = 0;
+    private static int contadorComparacao = 0;
 
-    public static int[] ordenar(int vetor[], int p, int u)
-    {
+    public static ResultadoOrdenacao ordenarComResultado(int[] vetor) {
+        resetarContadores();
+        long tempoInicial = System.currentTimeMillis();
+        int[] vetorOrdenado = ordenar(vetor, 0, vetor.length - 1);
+        long tempoMs = System.currentTimeMillis() - tempoInicial;
+
+        return new ResultadoOrdenacao(
+                vetorOrdenado,
+                tempoMs,
+                contadorComparacao,
+                contadorAtribuicao,
+                "MergeSort"
+        );
+    }
+
+    public static int[] ordenar(int[] vetor, int p, int u) {
         if (p < u) {
-            int q = p + (u-p)/2;
+            int q = p + (u - p) / 2;
 
             ordenar(vetor, p, q);
             ordenar(vetor, q + 1, u);
@@ -17,13 +31,12 @@ public class MergeSort {
         return vetor;
     }
 
-    public static int[] merge(int vetor[], int p, int q, int u){
-
+    public static int[] merge(int[] vetor, int p, int q, int u) {
         int n1 = q - p + 1;
         int n2 = u - q;
 
-        int esq[] = new int[n1];
-        int dir[] = new int[n2];
+        int[] esq = new int[n1];
+        int[] dir = new int[n2];
 
         for (int i = 0; i < n1; ++i) {
             esq[i] = vetor[p + i];
@@ -34,9 +47,10 @@ public class MergeSort {
             contadorAtribuicao++;
         }
 
-        int i = 0, j = 0;
-
+        int i = 0;
+        int j = 0;
         int k = p;
+
         while (i < n1 && j < n2) {
             contadorComparacao++;
             if (esq[i] <= dir[j]) {

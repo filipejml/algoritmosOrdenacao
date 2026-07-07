@@ -7,6 +7,7 @@ Projeto didático que implementa vários algoritmos de ordenação em Java e med
   - Main.java - ponto de entrada que permite escolher o tipo de vetor e o algoritmo.
   - GeradorVetor.java - gera vetores (crescente, decrescente, aleatório).
   - InsertionSort.java, BubbleSort.java, SelectionSort.java, MergeSort.java, HeapSort.java, QuickSort.java - algoritmos de ordenação.
+  - ResultadoOrdenacao.java - representa o resultado de uma execução, com vetor ordenado, tempo, comparações, atribuições e nome do algoritmo.
   - ImprimeVetor.java - utilitário para imprimir vetores.
 
 Veja o ponto de entrada em [src/algoritmos/Main.java](src/algoritmos/Main.java#L1).
@@ -40,19 +41,19 @@ Ao executar, o programa pede três entradas principais:
    - 1 - Insertion Sort
    - 2 - Bubble Sort
    - 3 - Selection Sort
-   - 4 - Merge Sort (mostra comparações e atribuições)
-   - 5 - Heap Sort (mostra comparações e atribuições)
-   - 6 - Quick Sort (mostra comparações e atribuições)
+   - 4 - Merge Sort
+   - 5 - Heap Sort
+   - 6 - Quick Sort
 
-O programa imprime o vetor ordenado e o tempo de execução em milissegundos.
+O programa imprime o vetor ordenado, o tempo de execução em milissegundos, o total de comparações e o total de atribuições.
 
 ## Observações
 - Para vetores grandes, prefira algoritmos O(n log n) (Merge, Heap, Quick).
-- Os contadores de comparações/atribuições são exibidos apenas para alguns algoritmos que os implementam.
+- Os algoritmos retornam um `ResultadoOrdenacao` para padronizar vetor ordenado, tempo, comparações, atribuições e nome do algoritmo.
 
 ## Sugestões
 - Executar testes automatizados e medir medições médias para comparar algoritmos.
 - Integrar um script para executar benchmarks com vários tamanhos e gerar CSVs.
 
 ---
-Projeto criado para fins educacionais — análises e experimentos com algoritmos de ordenação.
+Projeto criado para fins educacionais - análises e experimentos com algoritmos de ordenação.

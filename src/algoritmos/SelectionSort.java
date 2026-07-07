@@ -4,6 +4,14 @@ public class SelectionSort {
     private static long comparacoes = 0;
     private static long atribuicoes = 0;
 
+    public static ResultadoOrdenacao ordenarComResultado(int[] vetor) {
+        long tempoInicial = System.currentTimeMillis();
+        sort(vetor);
+        long tempoMs = System.currentTimeMillis() - tempoInicial;
+
+        return new ResultadoOrdenacao(vetor, tempoMs, comparacoes, atribuicoes, "SelectionSort");
+    }
+
     public static void sort(int[] vetor) {
         comparacoes = 0;
         atribuicoes = 0;

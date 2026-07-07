@@ -20,77 +20,42 @@ public class Main {
                 System.out.print("Selecione o algoritmo: 1 - Insertion / 2 - Bubble / 3 - Selection / 4 - Merge / 5 - Heap / 6 - Quick\n");
                 opcao2 = sc.nextInt();
 
-                switch (opcao2) {
-                    case 1:
-                        long tempoInicial = System.currentTimeMillis();
-                        vetor = InsertionSort.ordenar(vetor);
-                        long tempoGasto = System.currentTimeMillis() - tempoInicial;
-                        ImprimeVetor.imprime(vetor);
-                        System.out.println("O método InsertionSort foi executado em " + tempoGasto + " ms");
-                        System.out.println("Número de comparações: " + InsertionSort.getComparacoes());
-                        System.out.println("Número de atribuições: " + InsertionSort.getAtribuicoes());
-                        break;
+                ResultadoOrdenacao resultado = executarAlgoritmo(opcao2, vetor);
 
-                    case 2:
-                        long tempoInicial2 = System.currentTimeMillis();
-                        vetor = BubbleSort.sort(vetor);
-                        long tempoGasto2 = System.currentTimeMillis() - tempoInicial2;
-                        ImprimeVetor.imprime(vetor);
-                        System.out.println("O método BubbleSort foi executado em " + tempoGasto2 + " ms");
-                        System.out.println("Número de comparações: " + BubbleSort.getComparacoes());
-                        System.out.println("Número de atribuições: " + BubbleSort.getAtribuicoes());
-                        break;
-
-                    case 3:
-                        long tempoInicial3 = System.currentTimeMillis();
-                        int[] copiaVetorSelection = Arrays.copyOf(vetor, vetor.length);
-                        SelectionSort.sort(copiaVetorSelection);
-                        long tempoGasto3 = System.currentTimeMillis() - tempoInicial3;
-                        ImprimeVetor.imprime(copiaVetorSelection);
-                        System.out.println("O método SelectionSort foi executado em " + tempoGasto3 + " ms");
-                        System.out.println("Número de comparações: " + SelectionSort.getComparacoes());
-                        System.out.println("Número de atribuições: " + SelectionSort.getAtribuicoes());
-                        break;
-
-                    case 4:
-                        long tempoInicial4 = System.currentTimeMillis();
-                        int[] copiaVetorMerge = Arrays.copyOf(vetor, vetor.length);
-                        MergeSort.ordenar(copiaVetorMerge, 0, copiaVetorMerge.length - 1);
-                        long tempoGasto4 = System.currentTimeMillis() - tempoInicial4;
-                        ImprimeVetor.imprime(copiaVetorMerge);
-                        System.out.println("O método MergeSort foi executado em " + tempoGasto4 + " ms");
-                        System.out.println("Número de comparações: " + MergeSort.getContadorComparacao());
-                        System.out.println("Número de atribuições: " + MergeSort.getContadorAtribuicao());
-                        MergeSort.resetarContadores();
-                        break;
-
-                    case 5:
-                        long tempoInicial5 = System.currentTimeMillis();
-                        int[] copiaVetorHeap = Arrays.copyOf(vetor, vetor.length);
-                        HeapSort.ordenar(copiaVetorHeap);
-                        long tempoGasto5 = System.currentTimeMillis() - tempoInicial5;
-                        ImprimeVetor.imprime(copiaVetorHeap);
-                        System.out.println("O método HeapSort foi executado em " + tempoGasto5 + " ms");
-                        System.out.println("Número de comparações: " + HeapSort.getComparacoes());
-                        System.out.println("Número de atribuições: " + HeapSort.getAtribuicoes());
-                        break;
-
-                    case 6:
-                        long tempoInicial6 = System.currentTimeMillis();
-                        int[] copiaVetorQuickInsertion = Arrays.copyOf(vetor, vetor.length);
-                        QuickSort.ordenar(copiaVetorQuickInsertion, 0, copiaVetorQuickInsertion.length - 1);
-                        long tempoGasto6 = System.currentTimeMillis() - tempoInicial6;
-                        ImprimeVetor.imprime(copiaVetorQuickInsertion);
-                        System.out.println("O método QuickSort foi executado em " + tempoGasto6 + " ms");
-                        System.out.println("Número de comparações: " + QuickSort.getComparacoes());
-                        System.out.println("Número de atribuições: " + QuickSort.getAtribuicoes());
-                        QuickSort.resetarContadores();
-                        break;
-
-                    default:
-                        System.out.println("Opção inválida!");
+                if (resultado != null) {
+                    imprimirResultado(resultado);
+                } else {
+                    System.out.println("Opção inválida!");
                 }
             }
         } while (opcao > 0 && opcao < 4);
+    }
+
+    private static ResultadoOrdenacao executarAlgoritmo(int opcao, int[] vetor) {
+        int[] copiaVetor = Arrays.copyOf(vetor, vetor.length);
+
+        switch (opcao) {
+            case 1:
+                return InsertionSort.ordenarComResultado(copiaVetor);
+            case 2:
+                return BubbleSort.ordenarComResultado(copiaVetor);
+            case 3:
+                return SelectionSort.ordenarComResultado(copiaVetor);
+            case 4:
+                return MergeSort.ordenarComResultado(copiaVetor);
+            case 5:
+                return HeapSort.ordenarComResultado(copiaVetor);
+            case 6:
+                return QuickSort.ordenarComResultado(copiaVetor);
+            default:
+                return null;
+        }
+    }
+
+    private static void imprimirResultado(ResultadoOrdenacao resultado) {
+        ImprimeVetor.imprime(resultado.getVetorOrdenado());
+        System.out.println("O método " + resultado.getNomeAlgoritmo() + " foi executado em " + resultado.getTempoMs() + " ms");
+        System.out.println("Número de comparações: " + resultado.getComparacoes());
+        System.out.println("Número de atribuições: " + resultado.getAtribuicoes());
     }
 }

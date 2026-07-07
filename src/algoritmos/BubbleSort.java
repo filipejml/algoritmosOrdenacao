@@ -4,6 +4,14 @@ public class BubbleSort {
     private static long comparacoes = 0;
     private static long atribuicoes = 0;
 
+    public static ResultadoOrdenacao ordenarComResultado(int[] vetor) {
+        long tempoInicial = System.currentTimeMillis();
+        int[] vetorOrdenado = sort(vetor);
+        long tempoMs = System.currentTimeMillis() - tempoInicial;
+
+        return new ResultadoOrdenacao(vetorOrdenado, tempoMs, comparacoes, atribuicoes, "BubbleSort");
+    }
+
     public static int[] sort(int[] vetor) {
         comparacoes = 0;
         atribuicoes = 0;

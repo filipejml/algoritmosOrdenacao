@@ -4,17 +4,25 @@ public class QuickSort {
     private static long comparacoes = 0;
     private static long atribuicoes = 0;
 
+    public static ResultadoOrdenacao ordenarComResultado(int[] arr) {
+        long tempoInicial = System.currentTimeMillis();
+        int[] vetorOrdenado = ordenar(arr, 0, arr.length - 1);
+        long tempoMs = System.currentTimeMillis() - tempoInicial;
+
+        return new ResultadoOrdenacao(vetorOrdenado, tempoMs, comparacoes, atribuicoes, "QuickSort");
+    }
+
     public static int[] trocar(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-        atribuicoes += 3;  // Três atribuições foram feitas
+        atribuicoes += 3;
         return arr;
     }
 
     public static int particionar(int[] arr, int baixo, int alto) {
         int pivo = arr[alto];
-        int i = (baixo - 1);
+        int i = baixo - 1;
 
         for (int j = baixo; j <= alto - 1; j++) {
             comparacoes++;
@@ -24,7 +32,7 @@ public class QuickSort {
             }
         }
         trocar(arr, i + 1, alto);
-        return (i + 1);
+        return i + 1;
     }
 
     public static void insercao(int[] vetor, int inicio, int fim) {
