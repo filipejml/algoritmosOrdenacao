@@ -1,23 +1,25 @@
 package algoritmos;
 
-import java.util.Scanner;
 import java.util.Arrays;
-
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
         int opcao, opcao2, tam;
+
         do {
-            System.out.print("Qual a opção? 1 - Crescente / 2 - Decrescente / 3 - Aleatório\n"); // Caso queira sair do programa digite número diferente de 1, 2 e 3.
+            System.out.print("Qual a opção? 1 - Crescente / 2 - Decrescente / 3 - Aleatório\n");
             opcao = sc.nextInt();
+
             if (opcao == 1 || opcao == 2 || opcao == 3) {
                 System.out.print("Qual o tamanho do vetor?\n");
                 tam = sc.nextInt();
                 int[] vetor = GeradorVetor.gerar(tam, opcao);
+
                 System.out.print("Selecione o algoritmo: 1 - Insertion / 2 - Bubble / 3 - Selection / 4 - Merge / 5 - Heap / 6 - Quick\n");
                 opcao2 = sc.nextInt();
+
                 switch (opcao2) {
                     case 1:
                         long tempoInicial = System.currentTimeMillis();
@@ -25,14 +27,18 @@ public class Main {
                         long tempoGasto = System.currentTimeMillis() - tempoInicial;
                         ImprimeVetor.imprime(vetor);
                         System.out.println("O método InsertionSort foi executado em " + tempoGasto + " ms");
+                        System.out.println("Número de comparações: " + InsertionSort.getComparacoes());
+                        System.out.println("Número de atribuições: " + InsertionSort.getAtribuicoes());
                         break;
 
                     case 2:
                         long tempoInicial2 = System.currentTimeMillis();
-                        vetor = BubbleSort.sort(vetor); // Adição aqui
+                        vetor = BubbleSort.sort(vetor);
                         long tempoGasto2 = System.currentTimeMillis() - tempoInicial2;
                         ImprimeVetor.imprime(vetor);
                         System.out.println("O método BubbleSort foi executado em " + tempoGasto2 + " ms");
+                        System.out.println("Número de comparações: " + BubbleSort.getComparacoes());
+                        System.out.println("Número de atribuições: " + BubbleSort.getAtribuicoes());
                         break;
 
                     case 3:
@@ -42,6 +48,8 @@ public class Main {
                         long tempoGasto3 = System.currentTimeMillis() - tempoInicial3;
                         ImprimeVetor.imprime(copiaVetorSelection);
                         System.out.println("O método SelectionSort foi executado em " + tempoGasto3 + " ms");
+                        System.out.println("Número de comparações: " + SelectionSort.getComparacoes());
+                        System.out.println("Número de atribuições: " + SelectionSort.getAtribuicoes());
                         break;
 
                     case 4:
@@ -79,10 +87,8 @@ public class Main {
                         QuickSort.resetarContadores();
                         break;
 
-                    // Restante dos casos permanece igual
-                    // ...
                     default:
-                        System.out.println("Opcao invalida!");
+                        System.out.println("Opção inválida!");
                 }
             }
         } while (opcao > 0 && opcao < 4);
