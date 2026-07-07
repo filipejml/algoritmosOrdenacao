@@ -4,18 +4,18 @@ public class BubbleSort {
     private static long comparacoes = 0;
     private static long atribuicoes = 0;
 
-    public static ResultadoOrdenacao ordenarComResultado(int[] vetor) {
-        long tempoInicial = System.currentTimeMillis();
-        int[] vetorOrdenado = sort(vetor);
-        long tempoMs = System.currentTimeMillis() - tempoInicial;
-
-        return new ResultadoOrdenacao(vetorOrdenado, tempoMs, comparacoes, atribuicoes, "BubbleSort");
-    }
-
-    public static int[] sort(int[] vetor) {
+    public static ResultadoOrdenacao ordenar(int[] vetor) {
         comparacoes = 0;
         atribuicoes = 0;
 
+        long tempoInicial = System.currentTimeMillis();
+        ordenarVetor(vetor);
+        long tempoMs = System.currentTimeMillis() - tempoInicial;
+
+        return new ResultadoOrdenacao(vetor, tempoMs, comparacoes, atribuicoes, "BubbleSort");
+    }
+
+    private static void ordenarVetor(int[] vetor) {
         for (int i = 0; i < vetor.length; i++) {
             for (int j = 0; j < vetor.length - 1 - i; j++) {
                 comparacoes++;
@@ -27,15 +27,5 @@ public class BubbleSort {
                 }
             }
         }
-
-        return vetor;
-    }
-
-    public static long getComparacoes() {
-        return comparacoes;
-    }
-
-    public static long getAtribuicoes() {
-        return atribuicoes;
     }
 }

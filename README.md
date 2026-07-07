@@ -49,6 +49,7 @@ O programa imprime o vetor ordenado, o tempo de execução em milissegundos, o t
 
 ## Observações
 - Para vetores grandes, prefira algoritmos O(n log n) (Merge, Heap, Quick).
+- Todos os algoritmos expõem o mesmo método público: `ordenar(int[] vetor)`, retornando um `ResultadoOrdenacao`.
 - Os algoritmos retornam um `ResultadoOrdenacao` para padronizar vetor ordenado, tempo, comparações, atribuições e nome do algoritmo.
 
 ## Sugestões

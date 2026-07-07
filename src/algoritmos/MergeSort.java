@@ -1,95 +1,76 @@
 package algoritmos;
 
 public class MergeSort {
-    private static int contadorAtribuicao = 0;
-    private static int contadorComparacao = 0;
+    private static long comparacoes = 0;
+    private static long atribuicoes = 0;
 
-    public static ResultadoOrdenacao ordenarComResultado(int[] vetor) {
-        resetarContadores();
+    public static ResultadoOrdenacao ordenar(int[] vetor) {
+        comparacoes = 0;
+        atribuicoes = 0;
+
         long tempoInicial = System.currentTimeMillis();
-        int[] vetorOrdenado = ordenar(vetor, 0, vetor.length - 1);
+        ordenarVetor(vetor, 0, vetor.length - 1);
         long tempoMs = System.currentTimeMillis() - tempoInicial;
 
-        return new ResultadoOrdenacao(
-                vetorOrdenado,
-                tempoMs,
-                contadorComparacao,
-                contadorAtribuicao,
-                "MergeSort"
-        );
+        return new ResultadoOrdenacao(vetor, tempoMs, comparacoes, atribuicoes, "MergeSort");
     }
 
-    public static int[] ordenar(int[] vetor, int p, int u) {
-        if (p < u) {
-            int q = p + (u - p) / 2;
+    private static void ordenarVetor(int[] vetor, int inicio, int fim) {
+        if (inicio < fim) {
+            int meio = inicio + (fim - inicio) / 2;
 
-            ordenar(vetor, p, q);
-            ordenar(vetor, q + 1, u);
+            ordenarVetor(vetor, inicio, meio);
+            ordenarVetor(vetor, meio + 1, fim);
 
-            merge(vetor, p, q, u);
+            merge(vetor, inicio, meio, fim);
         }
-        return vetor;
     }
 
-    public static int[] merge(int[] vetor, int p, int q, int u) {
-        int n1 = q - p + 1;
-        int n2 = u - q;
+    private static void merge(int[] vetor, int inicio, int meio, int fim) {
+        int tamanhoEsquerda = meio - inicio + 1;
+        int tamanhoDireita = fim - meio;
 
-        int[] esq = new int[n1];
-        int[] dir = new int[n2];
+        int[] esquerda = new int[tamanhoEsquerda];
+        int[] direita = new int[tamanhoDireita];
 
-        for (int i = 0; i < n1; ++i) {
-            esq[i] = vetor[p + i];
-            contadorAtribuicao++;
+        for (int i = 0; i < tamanhoEsquerda; ++i) {
+            esquerda[i] = vetor[inicio + i];
+            atribuicoes++;
         }
-        for (int j = 0; j < n2; ++j) {
-            dir[j] = vetor[q + 1 + j];
-            contadorAtribuicao++;
+        for (int j = 0; j < tamanhoDireita; ++j) {
+            direita[j] = vetor[meio + 1 + j];
+            atribuicoes++;
         }
 
         int i = 0;
         int j = 0;
-        int k = p;
+        int k = inicio;
 
-        while (i < n1 && j < n2) {
-            contadorComparacao++;
-            if (esq[i] <= dir[j]) {
-                vetor[k] = esq[i];
+        while (i < tamanhoEsquerda && j < tamanhoDireita) {
+            comparacoes++;
+            if (esquerda[i] <= direita[j]) {
+                vetor[k] = esquerda[i];
                 i++;
             } else {
-                vetor[k] = dir[j];
+                vetor[k] = direita[j];
                 j++;
             }
             k++;
-            contadorAtribuicao++;
+            atribuicoes++;
         }
 
-        while (i < n1) {
-            vetor[k] = esq[i];
+        while (i < tamanhoEsquerda) {
+            vetor[k] = esquerda[i];
             i++;
             k++;
-            contadorAtribuicao++;
+            atribuicoes++;
         }
 
-        while (j < n2) {
-            vetor[k] = dir[j];
+        while (j < tamanhoDireita) {
+            vetor[k] = direita[j];
             j++;
             k++;
-            contadorAtribuicao++;
+            atribuicoes++;
         }
-        return vetor;
-    }
-
-    public static int getContadorAtribuicao() {
-        return contadorAtribuicao;
-    }
-
-    public static int getContadorComparacao() {
-        return contadorComparacao;
-    }
-
-    public static void resetarContadores() {
-        contadorAtribuicao = 0;
-        contadorComparacao = 0;
     }
 }

@@ -36,17 +36,17 @@ public class Main {
 
         switch (opcao) {
             case 1:
-                return InsertionSort.ordenarComResultado(copiaVetor);
+                return InsertionSort.ordenar(copiaVetor);
             case 2:
-                return BubbleSort.ordenarComResultado(copiaVetor);
+                return BubbleSort.ordenar(copiaVetor);
             case 3:
-                return SelectionSort.ordenarComResultado(copiaVetor);
+                return SelectionSort.ordenar(copiaVetor);
             case 4:
-                return MergeSort.ordenarComResultado(copiaVetor);
+                return MergeSort.ordenar(copiaVetor);
             case 5:
-                return HeapSort.ordenarComResultado(copiaVetor);
+                return HeapSort.ordenar(copiaVetor);
             case 6:
-                return QuickSort.ordenarComResultado(copiaVetor);
+                return QuickSort.ordenar(copiaVetor);
             default:
                 return null;
         }
