@@ -16,16 +16,31 @@ Veja o ponto de entrada em [src/algoritmos/Main.java](src/algoritmos/Main.java#L
 - JDK 8 ou superior instalado.
 
 ## Compilar e executar (linha de comando)
-No diretório raiz do projeto, execute:
+No diretório raiz do projeto, execute pelo PowerShell:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\compilar.ps1
+powershell -ExecutionPolicy Bypass -File .\executar.ps1
+```
+
+Ou pelo Prompt de Comando:
+
+```bat
+compilar.bat
+executar.bat
+```
+
+Também é possível executar manualmente:
 
 ```bash
-javac -d out src/algoritmos/*.java
+javac -encoding UTF-8 -d out src/algoritmos/*.java
 java -cp out algoritmos.Main
 ```
 
 Explicação:
 - O comando `javac` compila todas as classes do pacote para a pasta `out`.
 - O comando `java` executa a classe `algoritmos.Main`.
+- Os scripts verificam se o `javac` está disponível no `PATH` ou em `JAVA_HOME\bin`.
 
 ## Uso
 Ao executar, o programa pede três entradas principais:
