@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+    private static final int LIMITE_IMPRESSAO_VETOR = 100;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int opcao, opcao2, tam;
@@ -53,9 +55,18 @@ public class Main {
     }
 
     private static void imprimirResultado(ResultadoOrdenacao resultado) {
-        ImprimeVetor.imprime(resultado.getVetorOrdenado());
+        imprimirVetorSeForPequeno(resultado.getVetorOrdenado());
         System.out.println("O método " + resultado.getNomeAlgoritmo() + " foi executado em " + resultado.getTempoMs() + " ms");
         System.out.println("Número de comparações: " + resultado.getComparacoes());
         System.out.println("Número de atribuições: " + resultado.getAtribuicoes());
+    }
+
+    private static void imprimirVetorSeForPequeno(int[] vetor) {
+        if (vetor.length <= LIMITE_IMPRESSAO_VETOR) {
+            ImprimeVetor.imprime(vetor);
+            return;
+        }
+
+        System.out.println("Vetor ordenado omitido por ter " + vetor.length + " elementos.");
     }
 }
