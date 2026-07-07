@@ -8,9 +8,9 @@ public class QuickSort {
         comparacoes = 0;
         atribuicoes = 0;
 
-        long tempoInicial = System.currentTimeMillis();
+        long tempoInicial = System.nanoTime();
         quickInsertionSort(vetor, 0, vetor.length - 1);
-        long tempoMs = System.currentTimeMillis() - tempoInicial;
+        long tempoMs = (System.nanoTime() - tempoInicial) / 1_000_000;
 
         return new ResultadoOrdenacao(vetor, tempoMs, comparacoes, atribuicoes, "QuickSort");
     }

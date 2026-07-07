@@ -60,7 +60,7 @@ Ao executar, o programa pede três entradas principais:
    - 5 - Heap Sort
    - 6 - Quick Sort
 
-O programa imprime o vetor ordenado, o tempo de execução em milissegundos, o total de comparações e o total de atribuições.
+O programa imprime o vetor ordenado, o tempo de execução em milissegundos, o total de comparações e o total de atribuições. A medição usa `System.nanoTime()` e converte o resultado para milissegundos na saída.
 
 ## Observações
 - Para vetores grandes, prefira algoritmos O(n log n) (Merge, Heap, Quick).
