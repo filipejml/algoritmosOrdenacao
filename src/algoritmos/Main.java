@@ -11,7 +11,7 @@ public class Main {
         int opcao;
 
         do {
-            opcao = lerInteiro(sc, "Qual a opção? 1 - Crescente / 2 - Decrescente / 3 - Aleatório / 0 - Sair");
+            opcao = lerInteiro(sc, menuTipoVetor());
 
             if (opcao == 0) {
                 System.out.println("Programa encerrado.");
@@ -19,7 +19,7 @@ public class Main {
                 int tam = lerInteiroPositivo(sc, "Qual o tamanho do vetor?");
                 int[] vetor = GeradorVetor.gerar(tam, opcao);
 
-                int opcaoAlgoritmo = lerInteiro(sc, "Selecione o algoritmo: 1 - Insertion / 2 - Bubble / 3 - Selection / 4 - Merge / 5 - Heap / 6 - Quick");
+                int opcaoAlgoritmo = lerInteiro(sc, menuAlgoritmos());
                 ResultadoOrdenacao resultado = executarAlgoritmo(opcaoAlgoritmo, vetor);
 
                 if (resultado != null) {
@@ -31,6 +31,24 @@ public class Main {
                 System.out.println("Opção inválida!");
             }
         } while (opcao != 0);
+    }
+
+    private static String menuTipoVetor() {
+        return "\nEscolha o tipo de vetor:\n"
+                + "0 - Sair\n"
+                + "1 - Crescente\n"
+                + "2 - Decrescente\n"
+                + "3 - Aleatório";
+    }
+
+    private static String menuAlgoritmos() {
+        return "\nSelecione o algoritmo:\n"
+                + "1 - Insertion Sort\n"
+                + "2 - Bubble Sort\n"
+                + "3 - Selection Sort\n"
+                + "4 - Merge Sort\n"
+                + "5 - Heap Sort\n"
+                + "6 - Quick Sort";
     }
 
     private static int lerInteiro(Scanner sc, String mensagem) {

@@ -51,6 +51,8 @@ Ao executar, o programa pede três entradas principais:
    - 2 - Decrescente
    - 3 - Aleatório
 
+Use `0 - Sair` nesse menu para encerrar o programa.
+
 2. Tamanho do vetor: informe um número inteiro maior que zero (ex.: 1000).
 
 3. Seleção do algoritmo:
