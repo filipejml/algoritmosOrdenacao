@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class insertion_sort {
+public class InsertionSort {
     public static int[] ordenar(int[] vetor) {
         long comparacoes = 0;
         long atribuicoes = 0;

@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class bubble_sort {
+public class BubbleSort {
     public static int[] sort(int [] vetor) {
         long comparacoes = 0;
         long atribuicoes = 0;

@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class quick_sort {
+public class QuickSort {
     private static long comparacoes = 0;
     private static long atribuicoes = 0;
 

@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class merge_sort {
+public class MergeSort {
     private static int contadorAtribuicao = 0; // Contador de operações de atribuição
     private static int contadorComparacao = 0; // Contador de operações de comparação
 

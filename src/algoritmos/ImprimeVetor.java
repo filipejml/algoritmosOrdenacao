@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class imprime_vetor {
+public class ImprimeVetor {
     public static void imprime(int vetor[])
     {
         int n = vetor.length;

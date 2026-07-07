@@ -5,9 +5,9 @@ Projeto didático que implementa vários algoritmos de ordenação em Java e med
 ## Conteúdo
 - Implementações em src/algoritmos/:
   - Main.java - ponto de entrada que permite escolher o tipo de vetor e o algoritmo.
-  - gerar_vetor.java - gera vetores (crescente, decrescente, aleatório).
-  - insertion_sort.java, bubble_sort.java, selection_sort.java, merge_sort.java, heap_sort.java, quick_sort.java - algoritmos de ordenação.
-  - imprime_vetor.java - utilitário para imprimir vetores.
+  - GeradorVetor.java - gera vetores (crescente, decrescente, aleatório).
+  - InsertionSort.java, BubbleSort.java, SelectionSort.java, MergeSort.java, HeapSort.java, QuickSort.java - algoritmos de ordenação.
+  - ImprimeVetor.java - utilitário para imprimir vetores.
 
 Veja o ponto de entrada em [src/algoritmos/Main.java](src/algoritmos/Main.java#L1).
 

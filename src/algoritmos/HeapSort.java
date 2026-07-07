@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class heap_sort {
+public class HeapSort {
         private static int comparacoes = 0;
         private static int atribuicoes = 0;
 

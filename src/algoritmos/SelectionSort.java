@@ -1,6 +1,6 @@
 package algoritmos;
 
-public class selection_sort {
+public class SelectionSort {
 
     public static void sort(int[] vetor) {
         int comparacaoSelection = 0;

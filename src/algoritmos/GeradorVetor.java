@@ -2,7 +2,7 @@ package algoritmos;
 
 import java.util.Random;
 
-public class gerar_vetor {
+public class GeradorVetor {
     public static int[] gerar(int tam, int t) {
         int [] vetor = new int[tam];
         if(t==1) {
