@@ -14,6 +14,30 @@ Veja o ponto de entrada em [src/algoritmos/Main.java](src/algoritmos/Main.java#L
 
 ## Requisitos
 - JDK 8 ou superior instalado.
+- O comando `javac` precisa estar disponível no `PATH` ou em `JAVA_HOME\bin`.
+
+### Corrigindo `javac nao encontrado`
+Esse erro indica que o Java Runtime está instalado, mas o compilador do JDK não está disponível no terminal.
+
+Instale um JDK, por exemplo Temurin, Oracle JDK, Microsoft Build of OpenJDK ou outro JDK compatível. Depois configure uma destas opções:
+
+1. Defina `JAVA_HOME` apontando para a pasta do JDK, por exemplo:
+
+```powershell
+$env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-21"
+$env:PATH = "$env:JAVA_HOME\bin;$env:PATH"
+```
+
+2. Ou adicione diretamente a pasta `bin` do JDK ao `PATH`.
+
+Para verificar se ficou correto:
+
+```powershell
+javac -version
+java -version
+```
+
+Se `javac -version` responder uma versão, os scripts `compilar`, `executar` e `testar` já devem funcionar.
 
 ## Compilar e executar (linha de comando)
 No diretório raiz do projeto, execute pelo PowerShell:
@@ -21,6 +45,7 @@ No diretório raiz do projeto, execute pelo PowerShell:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\compilar.ps1
 powershell -ExecutionPolicy Bypass -File .\executar.ps1
+powershell -ExecutionPolicy Bypass -File .\testar.ps1
 ```
 
 Ou pelo Prompt de Comando:
@@ -28,6 +53,7 @@ Ou pelo Prompt de Comando:
 ```bat
 compilar.bat
 executar.bat
+testar.bat
 ```
 
 Também é possível executar manualmente:
@@ -41,6 +67,29 @@ Explicação:
 - O comando `javac` compila todas as classes do pacote para a pasta `out`.
 - O comando `java` executa a classe `algoritmos.Main`.
 - Os scripts verificam se o `javac` está disponível no `PATH` ou em `JAVA_HOME\bin`.
+
+## Testes
+Os testes automatizados ficam em `src/testes/TesteAlgoritmos.java`.
+
+Eles validam todos os algoritmos com vetores:
+- vazio;
+- tamanho 1;
+- já ordenado;
+- reverso;
+- com repetidos;
+- aleatório.
+
+Para executar:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\testar.ps1
+```
+
+Ou:
+
+```bat
+testar.bat
+```
 
 ## Uso
 Ao executar, o programa pede três entradas principais:
